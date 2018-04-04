@@ -5,6 +5,7 @@ services:
     build: data_collection
     depends_on:
       - postgres
+      - splash
     env_file:
       - .env
     volumes:
@@ -26,3 +27,9 @@ services:
     volumes:
       - ./database:/mnt/lib/database
       - ./processing:/mnt/code
+
+  splash:
+    image: scrapinghub/splash:3.2
+    ports:
+      - 5023:5023
+      - 8050:8050
